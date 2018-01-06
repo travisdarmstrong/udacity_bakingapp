@@ -78,6 +78,13 @@ public class Step implements Parcelable {
         return (!(videoURL.isEmpty() || videoURL.equals("")));
     }
 
+    /**
+     * Returns TRUE if the {@link Step} has a thumbnail image
+     */
+    public boolean hasThumbnail() {
+        return (!(thumbnailURL.isEmpty() || thumbnailURL.equals("")));
+    }
+
     @Override
     public int describeContents() {
         return 0;

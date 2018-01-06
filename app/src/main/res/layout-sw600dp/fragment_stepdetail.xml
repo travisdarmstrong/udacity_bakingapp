@@ -4,17 +4,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- Thumbnail Image (if exists) -->
+    <ImageView
+        android:id="@+id/detail_thumbnail_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/detail_margin_horizontal"
+        android:layout_marginStart="@dimen/detail_margin_horizontal"
+        android:layout_weight="2"
+        android:contentDescription="@string/detail_thumbnail_description"
+        android:paddingBottom="@dimen/detail_spacing_vertical"
+        android:paddingTop="@dimen/detail_spacing_vertical"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
     <!--Video player-->
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/detail_video"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_gravity="center_horizontal"
         android:layout_marginEnd="@dimen/detail_margin_horizontal"
         android:layout_marginLeft="@dimen/detail_margin_horizontal"
         android:layout_marginRight="@dimen/detail_margin_horizontal"
         android:layout_marginStart="@dimen/detail_margin_horizontal"
         android:layout_marginTop="@dimen/detail_spacing_vertical"
+        android:layout_weight="6"
         android:visibility="visible" />
 
     <!--Instructions text-->
@@ -22,12 +38,12 @@
         android:id="@+id/detail_instructions"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
         android:layout_marginEnd="@dimen/detail_margin_horizontal"
         android:layout_marginLeft="@dimen/detail_margin_horizontal"
         android:layout_marginRight="@dimen/detail_margin_horizontal"
         android:layout_marginStart="@dimen/detail_margin_horizontal"
         android:layout_marginTop="@dimen/detail_spacing_vertical"
+        android:layout_weight="4"
         android:textColor="@color/detail_header_text"
         android:visibility="visible" />
 

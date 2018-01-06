@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
      */
     private void DisplayRecipeData() {
         setDataView();
-        RecipeAdapter adapter = new RecipeAdapter(recipeList, this);
+        RecipeAdapter adapter = new RecipeAdapter(this, recipeList, this);
         mainRecycler.setAdapter(adapter);
     }
 

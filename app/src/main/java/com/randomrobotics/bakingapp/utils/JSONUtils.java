@@ -81,7 +81,7 @@ final class JSONUtils {
                 stepList.add(newStep);
             }
             // Create the new recipe and add it to the list
-            Recipe newRecipe = new Recipe(id, recipeName, servings, image, ingredientsList, stepList);
+            Recipe newRecipe = new Recipe(recipeName, servings, image, ingredientsList, stepList);
             recipeList.add(newRecipe);
         }
         return recipeList;

@@ -17,6 +17,8 @@
     <!--Detail-->
     <string name="detail_nav_prev">Previous</string>
     <string name="detail_nav_next">Next</string>
+    <string name="detail_thumbnail_description">Recipe Step Image</string>
+    <string name="detail_thumbnail_error_loading">Error loading thumbnail image</string>
 
     <!--Widget-->
     <string name="widget_config_header">Select Recipe</string>

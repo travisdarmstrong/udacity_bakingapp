@@ -146,7 +146,7 @@ public class IngredientsWidgetConfigureActivity extends Activity
      * Display the list of {@link Recipe}s using a {@link RecipeAdapter}
      */
     private void DisplayRecipeList() {
-        RecipeAdapter adapter = new RecipeAdapter(recipeList, this);
+        RecipeAdapter adapter = new RecipeAdapter(this, recipeList, this);
         recipeRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recipeRecycler.setHasFixedSize(true);
         recipeRecycler.addItemDecoration(new MainRecipeItemDecoration((int) getResources().getDimension(R.dimen.widget_config_margin)));

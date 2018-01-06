@@ -9,19 +9,11 @@ import java.util.ArrayList;
  * Recipe object
  */
 public class Recipe implements Parcelable {
-    private String id;
     private String name;
     private String servings;
     private String image;
     private ArrayList<Ingredient> ingredients;
     private ArrayList<Step> steps;
-
-    /**
-     * Get the {@link Recipe} id
-     */
-    public String getId() {
-        return id;
-    }
 
     /**
      * Get the {@link Recipe} name
@@ -45,6 +37,14 @@ public class Recipe implements Parcelable {
     }
 
     /**
+     * Return TRUE if the Recipe has an image resource
+     */
+    public boolean hasImage() {
+
+        return (!(image.isEmpty() || image.equals("")));
+    }
+
+    /**
      * Get the list of {@link Ingredient}s needed to make the {@link Recipe}
      */
     public ArrayList<Ingredient> getIngredients() {
@@ -61,15 +61,13 @@ public class Recipe implements Parcelable {
     /**
      * Create a {@link Recipe} object
      *
-     * @param id          ID of the recipe
      * @param name        Name of the recipe
      * @param servings    Number of servings the recipe will make
      * @param image       Image web resource
      * @param ingredients List of {@link Ingredient}s
      * @param steps       List of {@link Step}s
      */
-    public Recipe(String id, String name, String servings, String image, ArrayList<Ingredient> ingredients, ArrayList<Step> steps) {
-        this.id = id;
+    public Recipe(String name, String servings, String image, ArrayList<Ingredient> ingredients, ArrayList<Step> steps) {
         this.name = name;
         this.servings = servings;
         this.image = image;
@@ -125,7 +123,6 @@ public class Recipe implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(id);
         parcel.writeString(name);
         parcel.writeString(servings);
         parcel.writeString(image);
@@ -137,7 +134,6 @@ public class Recipe implements Parcelable {
      * Create the {@link Recipe} from the saved parcel
      */
     private Recipe(Parcel in) {
-        id = in.readString();
         name = in.readString();
         servings = in.readString();
         image = in.readString();

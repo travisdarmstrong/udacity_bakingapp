@@ -19,7 +19,22 @@
         android:textSize="@dimen/detail_header_textsize"
         tools:text="Step Details" />
 
-    <!--Video player-->
+    <!-- Thumbnail Image (if exists) -->
+    <ImageView
+        android:id="@+id/detail_thumbnail_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/detail_margin_horizontal"
+        android:layout_marginStart="@dimen/detail_margin_horizontal"
+        android:layout_weight="2"
+        android:contentDescription="@string/detail_thumbnail_description"
+        android:paddingBottom="@dimen/detail_spacing_vertical"
+        android:paddingTop="@dimen/detail_spacing_vertical"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
+    <!-- Video player (if exists) -->
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/detail_video"
         android:layout_width="match_parent"
@@ -43,8 +58,8 @@
         android:layout_marginStart="@dimen/detail_margin_horizontal"
         android:layout_marginTop="@dimen/detail_spacing_vertical"
         android:layout_weight="4"
-        android:textSize="@dimen/detail_textsize"
         android:textColor="@color/detail_header_text"
+        android:textSize="@dimen/detail_textsize"
         android:visibility="visible" />
 
     <!--Navigation buttons-->

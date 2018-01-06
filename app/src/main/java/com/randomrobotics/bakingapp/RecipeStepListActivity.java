@@ -6,16 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
-import com.randomrobotics.bakingapp.data.Recipe;
 import com.randomrobotics.bakingapp.data.Ingredient;
+import com.randomrobotics.bakingapp.data.Recipe;
 import com.randomrobotics.bakingapp.data.Step;
 import com.randomrobotics.bakingapp.ui.IngredientsFragment;
 import com.randomrobotics.bakingapp.ui.RecipeStepListFragment;
 import com.randomrobotics.bakingapp.ui.StepDetailFragment;
 
-import butterknife.BindView;
+import butterknife.BindBool;
 import butterknife.ButterKnife;
 import timber.log.Timber;
 
@@ -33,10 +32,9 @@ public class RecipeStepListActivity extends AppCompatActivity
     private static final String STEP_FRAGMENT_TAG = "step-list-tag";
     private static final String DETAIL_FRAGMENT_TAG = "detail-tag";
     private Recipe recipe;
-    @Nullable
-    @BindView(R.id.twopane_detail_container)
-    View detailView;
-    private boolean twoPane;
+    // Bind to boolean resource in layouts.xml
+    @BindBool(R.bool.two_pane_layout)
+    boolean twoPane;
     private int displayedStep = 0;
     private RecipeStepListFragment listFragment;
 
@@ -46,8 +44,6 @@ public class RecipeStepListActivity extends AppCompatActivity
         setContentView(R.layout.activity_recipesteplist);
         // Bind the UI elements
         ButterKnife.bind(this);
-        // Determine if this is a two-pane (tablet) view or not (phone);
-        twoPane = (detailView != null);
 
         StepDetailFragment detailFragment;
         // see if there is saved data
@@ -68,9 +64,6 @@ public class RecipeStepListActivity extends AppCompatActivity
             }
             // Create a new instance of the RecipeStepListFragment and display it
             listFragment = RecipeStepListFragment.newInstance(recipe);
-            ActionBar actionBar = getSupportActionBar();
-            if (actionBar != null)
-                setTitle(recipe.getName());
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.step_list_container, listFragment, STEP_FRAGMENT_TAG).commit();
             // If tablet display, show the Detail Fragment
@@ -80,6 +73,10 @@ public class RecipeStepListActivity extends AppCompatActivity
                 fragmentManager.beginTransaction().replace(R.id.twopane_detail_container, detailFragment, DETAIL_FRAGMENT_TAG).commit();
             }
         }
+        // Put recipe name in the title bar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            setTitle(recipe.getName());
     }
 
     /**

@@ -40,11 +40,12 @@ public class StepDetailActivity extends FragmentActivity
                 Timber.d("StepDetailActivity created without passing in a Recipe and Step Number");
                 finish();
             }
+            // Create the StepDetailFragment and display it
+            StepDetailFragment newFragment = StepDetailFragment.newInstance(recipe, stepNumber, false);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.detail_container, newFragment, FRAGMENT_TAG).commit();
         }
-        // Create the StepDetailFragment and display it
-        StepDetailFragment newFragment = StepDetailFragment.newInstance(recipe, stepNumber, false);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.detail_container, newFragment, FRAGMENT_TAG).commit();
+
     }
 
 

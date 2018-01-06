@@ -8,7 +8,9 @@
     <!-- Main Recipe View -->
     <color name="main_background">#D7CCC8</color>
     <color name="main_recipebackground">#A1887F</color>
+    <color name="main_transparent">#00112233</color>
     <color name="main_recipetext">#333333</color>
+    <color name="main_recipetext_shadow">#D7CCC8</color>
 
     <!-- Recipe Step List -->
     <color name="steps_ingredient_background">#A1887F</color>

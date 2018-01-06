@@ -25,13 +25,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
     // RecyclerView
     compile 'com.android.support:recyclerview-v7:26.1.0'
+    // Espresso UI testing
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:3.0.1'
+
     // ButterKnife for linking UI elements
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-
     // Timber for easy logging
     compile 'com.jakewharton.timber:timber:4.6.0'
     // Okhttp for easy web requests
@@ -40,8 +42,6 @@ dependencies {
     compile 'com.google.android.exoplayer:exoplayer:2.6.0'
     // Gson for serializing arraylist for widget
     compile 'com.google.code.gson:gson:2.8.0'
-
-    // Espresso UI testing
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:3.0.1'
+    // Picasso for easy loading images from URL into ImageView
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

@@ -19,7 +19,9 @@ import timber.log.Timber;
 
 public final class NetworkUtils {
 
-    private static final String RECIPE_LIST_URL = "http://go.udacity.com/android-baking-app-json";
+    //private static final String RECIPE_LIST_URL = "http://go.udacity.com/android-baking-app-json";
+    // TODO - change back to the real one
+    private static final String RECIPE_LIST_URL = "http://www.randomrobotics.com/special/recipes.json";
 
     /**
      * Get the URL for the list of {@link Recipe}s

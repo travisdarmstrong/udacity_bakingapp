@@ -8,9 +8,12 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.extractor.ExtractorsFactory;
@@ -26,6 +29,8 @@ import com.google.android.exoplayer2.util.Util;
 import com.randomrobotics.bakingapp.R;
 import com.randomrobotics.bakingapp.data.Recipe;
 import com.randomrobotics.bakingapp.data.Step;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +48,7 @@ public class StepDetailFragment extends Fragment {
     public static final String ARGUMENT_RECIPE = "arg-recipe";
     public static final String ARGUMENT_STEPNUMBER = "arg-stepnum";
     public static final String ARGUMENT_TWOPANE = "arg-twopane";
+    private static final String SAVED_PLAYER_POSITION = "saved-player-position";
     @BindView(R.id.detail_instructions)
     TextView instructionsTxt;
     @Nullable
@@ -62,9 +68,15 @@ public class StepDetailFragment extends Fragment {
     @Nullable
     @BindView(R.id.landscape_scrollview)
     View landscapeScroll;
+    @Nullable
+    @BindView(R.id.detail_thumbnail_view)
+    ImageView thumbnailView;
     private SimpleExoPlayer player;
     StepNavigationListener navigationListener;
     private boolean twoPaneDisplay;
+    private long playerPosition;
+    // Amount of time (milliseconds) to rewind the video when restarting the Fragment
+    private static final long PLAYER_REWIND_TIME = 2000;
 
     /**
      * Default Constructor
@@ -94,6 +106,13 @@ public class StepDetailFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // See if there is saved data
+        if (savedInstanceState != null && savedInstanceState.containsKey(SAVED_PLAYER_POSITION)) {
+            playerPosition = savedInstanceState.getLong(SAVED_PLAYER_POSITION);
+        } else {
+            playerPosition = 0;
+        }
+
         // Get the arguments, they must contain Recipe and other data
         Bundle args = getArguments();
         if (args != null && args.containsKey(ARGUMENT_RECIPE)) {
@@ -155,6 +174,13 @@ public class StepDetailFragment extends Fragment {
                 headerTxt.setText(step.getShortDescription());
             }
         }
+        // If the Step has a thumbnail URL AND the layout is portrait or tablet, show the thumbnail image
+        if (step.hasThumbnail()) {
+            ShowImage();
+        } else {
+            HideThumbnailView();
+        }
+
         // If the Step has a video URL, set up the Exoplayer display
         if (step.hasVideo()) {
             ShowVideo();
@@ -165,10 +191,47 @@ public class StepDetailFragment extends Fragment {
     }
 
     /**
+     * Show the thumbnail {@link ImageView} and set the image resource
+     */
+    private void ShowImage() {
+        if (thumbnailView == null) return;
+        thumbnailView.setVisibility(View.VISIBLE);
+        Picasso.with(getContext()).load(step.getThumbnailURL())
+                .placeholder(R.drawable.ic_cloud_download_black_24dp)
+                .into(thumbnailView, new PicassoCallback());
+    }
+
+    /**
+     * Callback to handle results of Picasso image view loading
+     */
+    class PicassoCallback implements Callback {
+        @Override
+        public void onSuccess() {
+        }
+
+        /**
+         * If there is an error retrieving the image, hide the thumbnail {@link ImageView}
+         */
+        @Override
+        public void onError() {
+            Toast.makeText(getContext(), getResources().getString(R.string.detail_thumbnail_error_loading), Toast.LENGTH_SHORT).show();
+            HideThumbnailView();
+        }
+    }
+
+    /**
+     * Hide the thumbnail {@link ImageView}
+     */
+    private void HideThumbnailView() {
+        if (thumbnailView != null) thumbnailView.setVisibility(View.GONE);
+    }
+
+    /**
      * Display the {@link Recipe} {@link Step} video in the {@link SimpleExoPlayerView}
      */
     private void ShowVideo() {
         // Make sure the Exoplayer View is visible
+        if (videoPlayerView == null) return;
         videoPlayerView.setVisibility(View.VISIBLE);
         if (!twoPaneDisplay && landscapeScroll != null) {
             // Phone Display is in landscape mode. Set the video player size to fill the screen
@@ -193,6 +256,8 @@ public class StepDetailFragment extends Fragment {
         ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
         MediaSource videoSource = new ExtractorMediaSource(videoUri, dataSourceFactory, extractorsFactory, null, null);
         player.prepare(videoSource);
+        Timber.d("Setting player position to %s", playerPosition);
+        player.seekTo(playerPosition);
         // Do not auto-play the video
         player.setPlayWhenReady(false);
     }
@@ -201,7 +266,7 @@ public class StepDetailFragment extends Fragment {
      * Hide the {@link SimpleExoPlayerView} video display
      */
     private void HideVideoPlayer() {
-        videoPlayerView.setVisibility(View.GONE);
+        if (videoPlayerView != null) videoPlayerView.setVisibility(View.GONE);
     }
 
 
@@ -234,8 +299,25 @@ public class StepDetailFragment extends Fragment {
     public void onPause() {
         super.onPause();
         if (player != null) {
+            // If the player is currently playing, rewind by a bit so the user doesn't miss anything
+            int playbackState = player.getPlaybackState();
+            playerPosition = player.getCurrentPosition();
+            if (playbackState == Player.STATE_READY && player.getPlayWhenReady()) {
+                playerPosition = Math.max(player.getCurrentPosition() - PLAYER_REWIND_TIME, 0);
+                Timber.d("Video playing. was at %s but remembering as %s", player.getCurrentPosition(), playerPosition);
+            }
             player.stop();
             player.release();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Save the position of the player
+        if (player != null) {
+            outState.putLong(SAVED_PLAYER_POSITION, playerPosition);
+            Timber.d("Saving video position as %s", playerPosition);
         }
     }
 
