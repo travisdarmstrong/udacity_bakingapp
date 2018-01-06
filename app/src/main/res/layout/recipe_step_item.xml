@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/recipe_step_height"
+    android:orientation="vertical">
+
+    <!--Short description-->
+    <TextView
+        android:id="@+id/recipe_step_item_shortdesc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/recipe_step_paddingleft"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/recipe_step_margin_vertical"
+        android:paddingEnd="@dimen/recipe_step_paddingleft"
+        android:paddingLeft="@dimen/recipe_step_paddingleft"
+        android:paddingRight="@dimen/recipe_step_paddingleft"
+        android:paddingStart="@dimen/recipe_step_paddingleft"
+        android:paddingTop="@dimen/recipe_step_margin_vertical"
+        android:textColor="@color/steps_ingredient_text"
+        android:textSize="@dimen/recipe_step_textsize"
+        tools:text="Recipe Step Short Description" />
+
+    <!--Divider-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/recipe_step_divider_height"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/recipe_step_margin_vertical"
+        android:layout_marginTop="@dimen/recipe_step_margin_vertical"
+        android:alpha=".5"
+        android:contentDescription="@string/divider"
+        android:src="@drawable/separator" />
+
+</LinearLayout>

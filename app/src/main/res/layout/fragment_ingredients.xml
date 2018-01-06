@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/ingredient_spacing_horizontal"
+    android:layout_marginLeft="@dimen/ingredient_spacing_horizontal"
+    android:layout_marginRight="@dimen/ingredient_spacing_horizontal"
+    android:layout_marginStart="@dimen/ingredient_spacing_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/ingredients_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ingredients_header_background"
+        android:fontFamily="sans-serif-medium"
+        android:paddingBottom="@dimen/ingredient_header_spacing"
+        android:paddingTop="@dimen/ingredient_header_spacing"
+        android:textAlignment="center"
+        android:textColor="@color/ingredients_header_text"
+        android:textSize="@dimen/ingredient_header_textsize"
+        tools:text="Ingredients for This Recipe" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ingredients_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

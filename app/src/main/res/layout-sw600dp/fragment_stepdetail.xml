@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--Video player-->
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/detail_video"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:layout_marginEnd="@dimen/detail_margin_horizontal"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal"
+        android:layout_marginRight="@dimen/detail_margin_horizontal"
+        android:layout_marginStart="@dimen/detail_margin_horizontal"
+        android:layout_marginTop="@dimen/detail_spacing_vertical"
+        android:visibility="visible" />
+
+    <!--Instructions text-->
+    <TextView
+        android:id="@+id/detail_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_marginEnd="@dimen/detail_margin_horizontal"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal"
+        android:layout_marginRight="@dimen/detail_margin_horizontal"
+        android:layout_marginStart="@dimen/detail_margin_horizontal"
+        android:layout_marginTop="@dimen/detail_spacing_vertical"
+        android:textColor="@color/detail_header_text"
+        android:visibility="visible" />
+
+</LinearLayout>

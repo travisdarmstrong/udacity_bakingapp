@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#795548</color>
+    <color name="colorPrimaryLight">#D7CCC8</color>
+    <color name="colorPrimaryDark">#5D4037</color>
+    <color name="colorAccent">#F57C00</color>
+
+    <!-- Main Recipe View -->
+    <color name="main_background">#D7CCC8</color>
+    <color name="main_recipebackground">#A1887F</color>
+    <color name="main_recipetext">#333333</color>
+
+    <!-- Recipe Step List -->
+    <color name="steps_ingredient_background">#A1887F</color>
+    <color name="steps_ingredient_text">#222222</color>
+    <color name="steps_selected_background">#A1887F</color>
+    <color name="steps_background">#FFFFFF</color>
+
+    <!-- Ingredients -->
+    <color name="ingredients_header_background">#D7CCC8</color>
+    <color name="ingredients_header_text">#222222</color>
+    <color name="ingredients_text">#333333</color>
+
+    <!--Detail-->
+    <color name="detail_nav_background">#D7CCC8</color>
+    <color name="detail_nav_text">#333333</color>
+    <color name="detail_header_background">#795548</color>
+    <color name="detail_header_text">#333333</color>
+
+    <!--Widget-->
+    <color name="widget_config_header_text">#222222</color>
+    <color name="widget_header_text">#333333</color>
+    <color name="widget_item_text">#333333</color>
+    <color name="widget_header_background">#795548</color>
+    <color name="widget_background">#D7CCC8</color>
+</resources>

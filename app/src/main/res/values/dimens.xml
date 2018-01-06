@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main Recipe display -->
+    <dimen name="progressbar_size">100dp</dimen>
+    <dimen name="card_height">160dp</dimen>
+    <dimen name="card_margin_horizontal">24dp</dimen>
+    <dimen name="card_margin_vertical">18dp</dimen>
+    <dimen name="card_text_size">22sp</dimen>
+
+    <!-- Recipe Step List -->
+    <dimen name="recipe_step_height">70dp</dimen>
+    <dimen name="recipe_step_margin_horizontal">24dp</dimen>
+    <dimen name="recipe_step_margin_vertical">4dp</dimen>
+    <dimen name="recipe_step_textsize">18sp</dimen>
+    <dimen name="recipe_step_paddingleft">12dp</dimen>
+    <dimen name="recipe_step_paddingright">12dp</dimen>
+    <dimen name="recipe_step_divider_height">10dp</dimen>
+
+    <!-- Ingredients List -->
+    <dimen name="ingredient_textsize">18sp</dimen>
+    <dimen name="ingredient_spacing_vertical">12dp</dimen>
+    <dimen name="ingredient_header_textsize">20sp</dimen>
+    <dimen name="ingredient_indent">28dp</dimen>
+    <dimen name="ingredient_right_padding">16dp</dimen>
+    <dimen name="ingredient_header_spacing">12dp</dimen>
+    <dimen name="ingredient_spacing_horizontal">12dp</dimen>
+
+    <!--Step Detail-->
+    <dimen name="detail_margin_horizontal">20dp</dimen>
+    <dimen name="detail_spacing_vertical">16dp</dimen>
+    <dimen name="detail_textsize">18sp</dimen>
+    <dimen name="detail_nav_textsize">18sp</dimen>
+    <dimen name="detail_nav_separation">20dp</dimen>
+    <dimen name="detail_nav_padding">16dp</dimen>
+    <dimen name="detail_header_textsize">20sp</dimen>
+    <dimen name="detail_header_spacing">12dp</dimen>
+    <dimen name="detail_video_size">300dp</dimen>
+
+    <!--Widget Configuration-->
+    <dimen name="widget_config_padding">16dp</dimen>
+    <dimen name="widget_config_header_textsize">24sp</dimen>
+    <dimen name="widget_config_margin">12dp</dimen>
+
+    <!--Widget-->
+    <dimen name="widget_margin_horizontal">12dp</dimen>
+    <dimen name="widget_header_padding">12dp</dimen>
+    <dimen name="widget_margin_vertical">12dp</dimen>
+    <dimen name="widget_header_textsize">20sp</dimen>
+    <dimen name="widget_ingredients_textsize">18sp</dimen>
+
+</resources>

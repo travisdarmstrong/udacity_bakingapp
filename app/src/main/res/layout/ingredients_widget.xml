@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/widget_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/widget_ingredients_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/widget_header_background"
+        android:fontFamily="sans-serif-medium"
+        android:padding="@dimen/widget_header_padding"
+        android:textAlignment="center"
+        android:textColor="@color/ingredients_text"
+        android:textSize="@dimen/widget_header_textsize"
+        tools:text="Ingredients for Recipe" />
+
+    <TextView
+        android:id="@+id/widget_ingredients_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/widget_margin_horizontal"
+        android:layout_marginLeft="@dimen/widget_margin_horizontal"
+        android:layout_marginRight="@dimen/widget_margin_horizontal"
+        android:layout_marginStart="@dimen/widget_margin_horizontal"
+        android:layout_marginTop="@dimen/widget_margin_vertical"
+        android:textColor="@color/widget_item_text"
+        android:textSize="@dimen/widget_ingredients_textsize"
+        android:visibility="gone"
+        tools:text="2  CUP  granulated sugar\r\n6 TBLSP  unsalted butter, melted" />
+
+    <ListView
+        android:id="@+id/widget_ingredients_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/widget_margin_vertical" />
+</LinearLayout>

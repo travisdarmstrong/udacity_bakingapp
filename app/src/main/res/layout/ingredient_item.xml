@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/ingredient_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ingredient_spacing_vertical"
+        android:layout_marginTop="@dimen/ingredient_spacing_vertical"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_vertical"
+        android:paddingEnd="@dimen/ingredient_right_padding"
+        android:paddingStart="@dimen/ingredient_indent"
+        android:textColor="@color/ingredients_text"
+        android:textSize="@dimen/ingredient_textsize"
+        tools:text="2 CUP granulated sugar" />
+
+</LinearLayout>
